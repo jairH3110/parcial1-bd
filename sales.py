@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import codecs
 import matplotlib.pyplot as plt
+import seaborn as sns
 bd_link = "./vgsales.csv"
 
 @st.cache
@@ -32,14 +33,16 @@ def filtro_opciones(public):
 data_carga =st.text('los 100 videojuegos mejor vendidos')
 data = all_bd(100)
 
-if st.sidebar.checkbox('mostrar toda la informacion sin filtro?'):
-    st.subheader('info')
-    st.write(data)
-    
 st.sidebar.image("credencial.jpeg")
 st.sidebar.write("josejair")
 st.sidebar.write("zS18003182")
 st.sidebar.markdown("##")
+
+if st.sidebar.checkbox('mostrar toda la informacion sin filtro?'):
+    st.subheader('info')
+    st.write(data)
+    
+
 
 texto_fil1 = st.sidebar.write("buscador por")
 buscador_x_genero =st.sidebar.text_input("genero")
@@ -102,4 +105,29 @@ st.bar_chart(chart_data,use_container_width=True)
 with st.expander("explanation"):
         st.write(" mayor venta de japon en la historia mostrada a 1= 100000 ")
  
+
+datos = pd.read_csv('./vgsales.csv' )
+
+
+fig, ax =plt.subplots()
+ax.hist(datos['Year'])
+
+st.pyplot(fig)
+
+fig2,ax2 = plt.subplots()
+y_pos =  datos["Publisher"]
+x_pos = datos['Year']
+
+
+ax2.barh(y_pos, x_pos)
+ax2.set_ylabel("Publisher")
+ax2.set_xlabel("JP_Sales")
+ax2.set_title('cuanto pagaron las clases de el titanic ')
+
+st.header("grafica desarrolladores-venta")
+st.pyplot(fig2)
+with st.expander("Quieres ver la explicacion?"):
+        st.write(" Relacion de las ventas de estados unidos respecto a las ventas globales: como se observa llego hasta su punto más alto en 2010 para despues ")
+
+
 
