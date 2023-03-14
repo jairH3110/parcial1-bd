@@ -97,7 +97,7 @@ st.dataframe(subset_Global_Sales)
 
 
 with st.expander("See explanation"):
-        st.write(" The chart above shows some numbers I picked for you. I rolled actual dice for these, so they're *guaranteed* to be random. ")
+        st.write(" bd. ")
           
 
 chart_data = pd.DataFrame((data['JP_Sales'].max(),data['JP_Sales'].min()),columns=["venta en jp"])
@@ -113,19 +113,6 @@ fig, ax =plt.subplots()
 ax.hist(datos['Year'])
 
 st.pyplot(fig)
-
-fig2,ax2 = plt.subplots()
-y_pos =  datos["Publisher"]
-x_pos = datos['Year']
-
-
-ax2.barh(y_pos, x_pos)
-ax2.set_ylabel("Publisher")
-ax2.set_xlabel("JP_Sales")
-ax2.set_title('cuanto pagaron las clases de el titanic ')
-
-st.header("grafica desarrolladores-venta")
-st.pyplot(fig2)
 with st.expander("Quieres ver la explicacion?"):
         st.write(" Relacion de las ventas de estados unidos respecto a las ventas globales: como se observa llego hasta su punto más alto en 2010 para despues ")
 
